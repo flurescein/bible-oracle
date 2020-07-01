@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'spa',
   head: {
-    title: 'bible-oracle',
+    title: 'Bible Oracle',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -12,12 +12,6 @@ module.exports = {
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-  },
-  router: {
-    base: '/oracle/'
-  },
-  generate: {
-    fallback: true
   },
   loading: { color: '#000000' },
   build: {
