@@ -1,0 +1,18 @@
+{
+  "russian": {
+    "russian": "Русский",
+    "english": "Russian"
+  },
+  "english": {
+    "russian": "Английский",
+    "english": "English"
+  },
+  "description": {
+    "russian": "Отвечу на твой вопрос случайным стихом из Библии",
+    "english": "Answer your question with a random verse from the Bible"
+  },
+  "loading": {
+    "russian": "Секунду...",
+    "english": "Loading..."
+  }
+}
