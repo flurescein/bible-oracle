@@ -39,6 +39,7 @@ export const actions = {
   },
   async switchLanguage({ commit, dispatch }, language) {
     commit('setLanguage', language)
+    commit('setVerse', undefined)
     await dispatch('randomizeVerse')
   }
 }
