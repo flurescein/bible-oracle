@@ -16,6 +16,9 @@ module.exports = {
   router: {
     base: '/oracle/'
   },
+  generate: {
+    fallback: true
+  },
   loading: { color: '#000000' },
   build: {
     extend(config, { isDev, isClient }) {
