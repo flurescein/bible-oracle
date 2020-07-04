@@ -26,11 +26,11 @@ export const actions = {
     const requestUrl = `${randomVerseApiUrl}?language=${currentLanguage}`
     let randomVerse
     try {
-      randomVerse = await fetch(requestUrl)
+      randomVerse = await (await fetch(requestUrl)).json()
     } catch (error) {
       commit('setVerse', translations.error[currentLanguage])
     } finally {
-      commit('setVerse', JSON.parse(randomVerse.body))
+      commit('setVerse', randomVerse.text)
     }
   },
   async switchLanguage({ commit, dispatch }, language) {
