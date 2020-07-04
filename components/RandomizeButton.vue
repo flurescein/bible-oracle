@@ -18,6 +18,7 @@ export default {
 img {
   user-select: none;
   height: 40px;
+  cursor: pointer;
 }
 
 @media (orientation: portrait) {

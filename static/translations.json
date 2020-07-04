@@ -14,5 +14,9 @@
   "loading": {
     "russian": "Секунду...",
     "english": "Loading..."
+  },
+  "error": {
+    "russian": "Что-то сломалось =( Может, позже заработает?",
+    "english": "Something went wrong. Try again later."
   }
 }

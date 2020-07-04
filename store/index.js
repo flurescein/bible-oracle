@@ -1,6 +1,7 @@
 import createPersistedState from 'vuex-persistedstate'
 
 import translations from '~/static/translations.json'
+import { randomVerseApiUrl } from '~/static/settings.json'
 
 export const state = () => ({
   verse: undefined,
@@ -22,20 +23,15 @@ export const mutations = {
 
 export const actions = {
   async randomizeVerse({ state: { currentLanguage }, commit }) {
-    const localStorageKey = `${currentLanguage}Verses`
-
-    let verses = localStorage.getItem(localStorageKey)
-
-    if (verses === null) {
-      verses = (await import(`~/static/bibles/${currentLanguage}.json`)).default
-      localStorage.setItem(localStorageKey, JSON.stringify(verses))
-    } else {
-      verses = JSON.parse(verses)
+    const requestUrl = `${randomVerseApiUrl}?language=${currentLanguage}`
+    let randomVerse
+    try {
+      randomVerse = await fetch(requestUrl)
+    } catch (error) {
+      commit('setVerse', translations.error[currentLanguage])
+    } finally {
+      commit('setVerse', JSON.parse(randomVerse.body))
     }
-
-    const randomVerse = verses[Math.floor(Math.random() * verses.length)]
-
-    commit('setVerse', randomVerse)
   },
   async switchLanguage({ commit, dispatch }, language) {
     commit('setLanguage', language)
