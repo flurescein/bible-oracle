@@ -5,6 +5,7 @@ import { bibleApiUrl } from '~/static/settings.json'
 
 export const state = () => ({
   verse: undefined,
+  isVerseLoaded: false,
   languages: ['russian', 'english'],
   currentLanguage: 'russian',
   translations
@@ -18,11 +19,16 @@ export const mutations = {
   },
   setVerse(state, verse) {
     state.verse = verse
+  },
+  setIsVerseLoaded(state, isLoaded) {
+    state.isVerseLoaded = isLoaded
   }
 }
 
 export const actions = {
   async randomizeVerse({ state: { currentLanguage }, commit }) {
+    commit('setIsVerseLoaded', false)
+
     try {
       const randomVerseResponse = await (
         await fetch(bibleApiUrl, {
@@ -40,6 +46,8 @@ export const actions = {
       commit('setVerse', randomVerseResponse.data.randomVerse.text)
     } catch (error) {
       commit('setVerse', translations.error[currentLanguage])
+    } finally {
+      commit('setIsVerseLoaded', true)
     }
   },
   async switchLanguage({ commit, dispatch }, language) {
