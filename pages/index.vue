@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 import Verse from '~/components/Verse.vue'
 import LanguageSwitcher from '~/components/LanguageSwitcher.vue'
@@ -17,9 +17,16 @@ import RandomizeButton from '~/components/RandomizeButton.vue'
 
 export default {
   components: { Verse, LanguageSwitcher, RandomizeButton },
+  computed: { ...mapState(['translations', 'currentLanguage']) },
   methods: { ...mapActions(['randomizeVerse']) },
   mounted() {
     this.randomizeVerse()
+  },
+  head() {
+    return {
+      title: this.translations.title[this.currentLanguage],
+      htmlAttrs: { lang: this.translations.lang[this.currentLanguage] }
+    }
   }
 }
 </script>

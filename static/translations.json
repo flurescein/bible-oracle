@@ -18,5 +18,13 @@
   "error": {
     "russian": "Что-то сломалось =( Может, позже заработает?",
     "english": "Something went wrong. Try again later."
+  },
+  "title": {
+    "russian": "Библейский Оракул",
+    "english": "Bible Oracle"
+  },
+  "lang": {
+    "russian": "ru",
+    "english": "en"
   }
 }
