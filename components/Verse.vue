@@ -1,6 +1,8 @@
 <template>
-  <span v-if="verse !== undefined">{{ verse }}</span>
-  <Localized v-else phrase="loading" />
+  <section>
+    <span v-if="verse !== undefined">{{ verse }}</span>
+    <Localized v-else phrase="loading" />
+  </section>
 </template>
 
 <script>
@@ -17,18 +19,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-span {
+section {
   max-width: 1000px;
-}
-
-@media (orientation: landscape) {
-  span {
-    font-size: 32px;
-  }
+  display: flex;
+  align-items: center;
+  font-size: 38px;
 }
 
 @media (orientation: portrait) {
-  span {
+  section {
     font-size: 24px;
   }
 }
