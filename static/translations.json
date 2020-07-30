@@ -16,8 +16,8 @@
     "english": "Loading..."
   },
   "error": {
-    "russian": "Что-то сломалось =( Может, позже заработает?",
-    "english": "Something went wrong. Try again later."
+    "russian": "Мой сервер с цитатами истратил все доступные ему бесплатные часы. К счастью, он совсем скоро вернётся к нам. К счастью, я позаботился о том, чтобы теперь часов хватало. Заходите ещё!",
+    "english": "The verse server is temporarily unavailable. But this will be fixed soon. Come back here again!"
   },
   "title": {
     "russian": "Библейский Оракул",
