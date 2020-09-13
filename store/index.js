@@ -30,7 +30,8 @@ export const actions = {
     commit('setIsVerseLoaded', false)
 
     const randomVerseResponse = await fetch(
-      `${bibleApiUrl}/random?language=${currentLanguage}`
+      `${bibleApiUrl}/random?language=${currentLanguage}`,
+      { mode: 'no-cors' }
     )
 
     if (randomVerseResponse.ok) {
