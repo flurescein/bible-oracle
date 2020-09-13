@@ -37,7 +37,8 @@ export const actions = {
 
       const { text } = await randomVerseResponse.json()
       commit('setVerse', text)
-    } catch {
+    } catch (error) {
+      console.error(error)
       commit('setVerse', translations.error[currentLanguage])
     } finally {
       commit('setIsVerseLoaded', true)
