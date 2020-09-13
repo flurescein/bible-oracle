@@ -29,18 +29,19 @@ export const actions = {
   async randomizeVerse({ state: { currentLanguage }, commit }) {
     commit('setIsVerseLoaded', false)
 
-    const randomVerseResponse = await fetch(
-      `${bibleApiUrl}/random?language=${currentLanguage}`,
-      { mode: 'no-cors' }
-    )
+    try {
+      const randomVerseResponse = await fetch(
+        `${bibleApiUrl}/random?language=${currentLanguage}`,
+        { mode: 'no-cors' }
+      )
 
-    if (randomVerseResponse.ok) {
-      commit('setVerse', randomVerseResponse.data.randomVerse.text)
-    } else {
+      const { text } = await randomVerseResponse.json()
+      commit('setVerse', text)
+    } catch {
       commit('setVerse', translations.error[currentLanguage])
+    } finally {
+      commit('setIsVerseLoaded', true)
     }
-
-    commit('setIsVerseLoaded', true)
   },
   async switchLanguage({ commit, dispatch }, language) {
     commit('setLanguage', language)
